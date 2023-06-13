@@ -1,0 +1,17 @@
+{% extends "master.html" %}
+
+{% block title %}
+    Details about {{myproduct.name}}
+{% endblock %}
+
+{% block content %}
+
+<div class="card mt-2">
+    <div class="card-header">Details about {{myproduct.name}}</div>
+    <div class="card-body">
+        <img src="{{myproduct.imgpath}}" alt="Product Image" width="20%" height="20%"/>
+        <p>Price: {{myproduct.price}}</p>
+        <p>Description: {{myproduct.text}}</p>
+    </div>
+</div>
+{% endblock %}

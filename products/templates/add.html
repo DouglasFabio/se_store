@@ -1,0 +1,39 @@
+{% extends "master.html" %}
+
+{% block title %}
+- New product
+{% endblock %}
+
+{% block content %}
+
+<div class="card mt-2">
+    <div class="card-header">
+        New product
+    </div>
+    <div class="card-body">
+        <form action="addrecord/" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" aria-describedby="name">
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Price:</label>
+                <input type="number" step="0.01" class="form-control" id="price" name="price" aria-describedby="price">
+            </div>
+            <div class="mb-3">
+                <label for="text" class="form-label">Text:</label>
+                <input type="text" class="form-control" id="text" name="text" aria-describedby="text">
+            </div>
+            <div class="mb-3">
+                <label for="imgpath" class="form-label">URL Image:</label>
+                <textarea class="form-control" id="imgpath" name="imgpath" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+            <a href="/products" class="btn btn-secondary">Back</a>
+          </form>
+          
+    </div>
+</div>
+
+{% endblock %}
