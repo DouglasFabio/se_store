@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 06/06/2023 às 02:06
--- Versão do servidor: 10.4.28-MariaDB
+-- Tempo de geração: 13/06/2023 às 14:49
+-- Versão do servidor: 8.0.32
 -- Versão do PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `auth_group` (
-  `id` int(11) NOT NULL,
-  `name` varchar(150) NOT NULL
+  `id` int NOT NULL,
+  `name` varchar(150) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -39,9 +39,9 @@ CREATE TABLE `auth_group` (
 --
 
 CREATE TABLE `auth_group_permissions` (
-  `id` bigint(20) NOT NULL,
-  `group_id` int(11) NOT NULL,
-  `permission_id` int(11) NOT NULL
+  `id` bigint NOT NULL,
+  `group_id` int NOT NULL,
+  `permission_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -51,10 +51,10 @@ CREATE TABLE `auth_group_permissions` (
 --
 
 CREATE TABLE `auth_permission` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `content_type_id` int(11) NOT NULL,
-  `codename` varchar(100) NOT NULL
+  `id` int NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `content_type_id` int NOT NULL,
+  `codename` varchar(100) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -98,14 +98,14 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 --
 
 CREATE TABLE `auth_user` (
-  `id` int(11) NOT NULL,
-  `password` varchar(128) NOT NULL,
+  `id` int NOT NULL,
+  `password` varchar(128) COLLATE utf8mb4_general_ci NOT NULL,
   `last_login` datetime(6) DEFAULT NULL,
   `is_superuser` tinyint(1) NOT NULL,
-  `username` varchar(150) NOT NULL,
-  `first_name` varchar(150) NOT NULL,
-  `last_name` varchar(150) NOT NULL,
-  `email` varchar(254) NOT NULL,
+  `username` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
+  `first_name` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
+  `last_name` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(254) COLLATE utf8mb4_general_ci NOT NULL,
   `is_staff` tinyint(1) NOT NULL,
   `is_active` tinyint(1) NOT NULL,
   `date_joined` datetime(6) NOT NULL
@@ -118,9 +118,9 @@ CREATE TABLE `auth_user` (
 --
 
 CREATE TABLE `auth_user_groups` (
-  `id` bigint(20) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `group_id` int(11) NOT NULL
+  `id` bigint NOT NULL,
+  `user_id` int NOT NULL,
+  `group_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -130,9 +130,9 @@ CREATE TABLE `auth_user_groups` (
 --
 
 CREATE TABLE `auth_user_user_permissions` (
-  `id` bigint(20) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `permission_id` int(11) NOT NULL
+  `id` bigint NOT NULL,
+  `user_id` int NOT NULL,
+  `permission_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -142,15 +142,15 @@ CREATE TABLE `auth_user_user_permissions` (
 --
 
 CREATE TABLE `django_admin_log` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `action_time` datetime(6) NOT NULL,
-  `object_id` longtext DEFAULT NULL,
-  `object_repr` varchar(200) NOT NULL,
-  `action_flag` smallint(5) UNSIGNED NOT NULL CHECK (`action_flag` >= 0),
-  `change_message` longtext NOT NULL,
-  `content_type_id` int(11) DEFAULT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `object_id` longtext COLLATE utf8mb4_general_ci,
+  `object_repr` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
+  `action_flag` smallint UNSIGNED NOT NULL,
+  `change_message` longtext COLLATE utf8mb4_general_ci NOT NULL,
+  `content_type_id` int DEFAULT NULL,
+  `user_id` int NOT NULL
+) ;
 
 -- --------------------------------------------------------
 
@@ -159,9 +159,9 @@ CREATE TABLE `django_admin_log` (
 --
 
 CREATE TABLE `django_content_type` (
-  `id` int(11) NOT NULL,
-  `app_label` varchar(100) NOT NULL,
-  `model` varchar(100) NOT NULL
+  `id` int NOT NULL,
+  `app_label` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `model` varchar(100) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -184,9 +184,9 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 --
 
 CREATE TABLE `django_migrations` (
-  `id` bigint(20) NOT NULL,
-  `app` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `id` bigint NOT NULL,
+  `app` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `applied` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -225,8 +225,8 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 --
 
 CREATE TABLE `django_session` (
-  `session_key` varchar(40) NOT NULL,
-  `session_data` longtext NOT NULL,
+  `session_key` varchar(40) COLLATE utf8mb4_general_ci NOT NULL,
+  `session_data` longtext COLLATE utf8mb4_general_ci NOT NULL,
   `expire_date` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -237,11 +237,11 @@ CREATE TABLE `django_session` (
 --
 
 CREATE TABLE `products_product` (
-  `id` bigint(20) NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `id` bigint NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `price` double DEFAULT NULL,
-  `text` varchar(255) NOT NULL,
-  `imgpath` longtext NOT NULL
+  `text` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `imgpath` longtext COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -257,7 +257,14 @@ INSERT INTO `products_product` (`id`, `name`, `price`, `text`, `imgpath`) VALUES
 (6, 'Bleakheart Banshee Cutlass', 24.9, 'A blade honed to cleave a heart as cleanly as that of the forlorn spirit whose family once owned it.', 'https://static.wikia.nocookie.net/seaofthieves_gamepedia/images/9/9e/Bleakheart_Banshee_Cutlass.png/revision/latest/scale-to-width-down/1000?cb=20220929174706'),
 (7, 'Bone Crusher Cutlass', 15, 'This sword cuts right to the bone.', 'https://static.wikia.nocookie.net/seaofthieves_gamepedia/images/9/9b/Bone_Crusher_Cutlass.png/revision/latest/scale-to-width-down/1000?cb=20210123023346'),
 (8, 'Briggsy\'s Sword', 50, 'The resplendent sword of the Skeleton Lord Briggsy, as sharp as it is shiny.', 'https://static.wikia.nocookie.net/seaofthieves_gamepedia/images/a/ab/Briggsy%27s_Sword.png/revision/latest/scale-to-width-down/1000?cb=20210123023353'),
-(9, 'Captain Bones\' Original Pirate Cutlass', 75, 'This vicious sharp-tongued cutlass is a trophy of a year well-spent in pirate paradise.', 'https://static.wikia.nocookie.net/seaofthieves_gamepedia/images/b/bd/Captain_Bones%27_Original_Pirate_Cutlass.png/revision/latest/scale-to-width-down/1000?cb=20210123023400');
+(9, 'Captain Bones\' Original Pirate Cutlass', 75, 'This vicious sharp-tongued cutlass is a trophy of a year well-spent in pirate paradise.', 'https://static.wikia.nocookie.net/seaofthieves_gamepedia/images/b/bd/Captain_Bones%27_Original_Pirate_Cutlass.png/revision/latest/scale-to-width-down/1000?cb=20210123023400'),
+(10, 'Crimson Crypt Cutlass', 24.9, 'Wielders of this scarlet-edged blade gain an insatiable thirst for red liquid. Here’s hoping it’s pomegranate juice.', 'https://static.wikia.nocookie.net/seaofthieves_gamepedia/images/c/c3/Crimson_Crypt_Cutlass.png/revision/latest/scale-to-width-down/1000?cb=20211014185048'),
+(11, 'Cronch Cutlass', 24.9, 'Peel back for a mighty swing and take a bite out of your enemies.', 'https://static.wikia.nocookie.net/seaofthieves_gamepedia/images/a/ae/Cronch_Cutlass.png/revision/latest/scale-to-width-down/1000?cb=20210123023420'),
+(12, 'Cursed Adventurer Cutlass', 50, 'A gem-studded, gold-bladed weapon inspired by the legend of Captain Briggsy. It never asked to be curved!', 'https://static.wikia.nocookie.net/seaofthieves_gamepedia/images/f/f6/Cursed_Adventurer_Cutlass.png/revision/latest/scale-to-width-down/1000?cb=20210923193842'),
+(13, 'Cursed Ferryman Cutlass', 24.9, 'The handle is shaped like a cephalopod. The blade is shaped like something sharp and pointy.', 'https://static.wikia.nocookie.net/seaofthieves_gamepedia/images/c/c9/Cursed_Ferryman_Cutlass.png/revision/latest/scale-to-width-down/1000?cb=20210817180909'),
+(14, 'Cutlass of Courage', 50, 'The Cutlass of Courage is so named because it\'s actually terribly blunt.', 'https://static.wikia.nocookie.net/seaofthieves_gamepedia/images/4/49/Cutlass_of_Courage.png/revision/latest/scale-to-width-down/1000?cb=20210123023426'),
+(15, 'Cutlass of the Damned', 75, 'A pirate who seriously mistimed their sword lunge took this weapon with them to the Ferry, and left it there.', 'https://static.wikia.nocookie.net/seaofthieves_gamepedia/images/5/50/Cutlass_of_the_Damned.png/revision/latest/scale-to-width-down/1000?cb=20221203120251'),
+(16, 'Cutlass of The Wailing Barnacle', 15, 'From the wreck of the Wailing Barnacle, this blade seems fun but has a treacherous legacy...', 'https://static.wikia.nocookie.net/seaofthieves_gamepedia/images/1/1e/Cutlass_of_The_Wailing_Barnacle.png/revision/latest/scale-to-width-down/1000?cb=20210123023439');
 
 --
 -- Índices para tabelas despejadas
@@ -350,61 +357,61 @@ ALTER TABLE `products_product`
 -- AUTO_INCREMENT de tabela `auth_group`
 --
 ALTER TABLE `auth_group`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `auth_group_permissions`
 --
 ALTER TABLE `auth_group_permissions`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `auth_permission`
 --
 ALTER TABLE `auth_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de tabela `auth_user`
 --
 ALTER TABLE `auth_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `auth_user_groups`
 --
 ALTER TABLE `auth_user_groups`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `auth_user_user_permissions`
 --
 ALTER TABLE `auth_user_user_permissions`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `django_content_type`
 --
 ALTER TABLE `django_content_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de tabela `products_product`
 --
 ALTER TABLE `products_product`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Restrições para tabelas despejadas
